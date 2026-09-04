@@ -91,3 +91,44 @@ print("\nmissed")
 for skill in missing:
     print("x",skill)
 print(f"\nMatch Score: {matchper:.0f}%")
+
+#while
+skills = ["python", "java", "sql", "aws"]
+
+i = 0
+
+while i < len(skills):
+    print(skills[i])
+    i += 1
+#while
+required_skills = ["python", "java", "sql", "aws"]
+candidate_skills = ["python", "java", "c++"]
+i=0
+while i<len(required_skills):
+    if required_skills[i] in candidate_skills:
+        print(required_skills[i],"-->matched")
+    else:
+        print(required_skills[i],"-->missing")
+    i+=1
+
+#mini project using while
+required_skills=["java","aws","docker","fastapts","python"]
+candidate_skills=["python","sql","docker","java"]
+matched=[]
+missing=[]
+i=0
+while i<len(required_skills):
+    if required_skills[i] in candidate_skills:
+        matched.append(required_skills[i])
+    else:
+        missing.append(required_skills[i])
+    i+=1
+matchper=(len(matched)/len(required_skills))*100
+print("=========Resume Analyser=======")
+print("\nmatched")
+for skill in matched:
+    print("/",skill)
+print("\nmissed")  
+for skill in missing:
+    print("x",skill)
+print(f"\nMatch Score: {matchper:.0f}%")
