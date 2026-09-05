@@ -132,3 +132,146 @@ print("\nmissed")
 for skill in missing:
     print("x",skill)
 print(f"\nMatch Score: {matchper:.0f}%")
+
+
+# ==============================
+# DAY 2 - PYTHON FUNCTIONS
+# ==============================
+
+# Functions
+def dog():
+    print("cat")
+
+dog()
+
+
+# Functions with Parameters
+def student(name, age):
+    print("student name:", name)
+    print("student age:", age)
+
+student("kusuma", 19)
+student("jaeshu", 20)
+
+
+# Return
+def calculate_score(matched, total):
+    return (matched / total) * 100
+
+score = calculate_score(3, 5)
+print(score)
+
+
+# Parameters with Default Values
+def job_role(role="AI Engineer"):
+    print("my job role is", role)
+
+job_role()
+job_role("ML Engineer")
+
+
+# Variable Scope
+def student():
+    student_name = "Kusuma"
+    print(student_name)
+
+student()
+
+
+# List Comprehension
+skills = ["python", "java", "sql", "docker"]
+
+upper = [skill.upper() for skill in skills]
+
+print(upper)
+
+
+# List Comprehension + If
+skills = ["python", "java", "sql", "docker", "aws"]
+
+new_list = [skill for skill in skills if len(skill) > 4]
+
+print(new_list)
+
+
+# Functions + Comprehension + If
+def filter_skills(skills):
+    result = [skill for skill in skills if len(skill) > 4]
+    return result
+
+
+skills = ["python", "java", "sql", "docker", "aws"]
+
+result = filter_skills(skills)
+
+print(result)
+
+
+# ==============================
+# RESUME SKILL ANALYZER
+# ==============================
+
+required_skills = ["python", "java", "sql", "aws", "docker"]
+
+candidate_skills = ["python", "java", "docker"]
+
+
+# Find Matched Skills
+def find_matched_skills(required_skills, candidate_skills):
+    matched = []
+
+    for skill in required_skills:
+        if skill in candidate_skills:
+            matched.append(skill)
+
+    return matched
+
+
+matched = find_matched_skills(required_skills, candidate_skills)
+
+print("Matched Skills:", matched)
+
+
+# Find Missing Skills
+def find_missing_skills(required_skills, candidate_skills):
+    missing = []
+
+    for skill in required_skills:
+        if skill not in candidate_skills:
+            missing.append(skill)
+
+    return missing
+
+
+missing = find_missing_skills(required_skills, candidate_skills)
+
+print("Missing Skills:", missing)
+
+
+# Calculate Match Score
+def calculate_match_score(matched_skills, required_skills):
+    percentage = (len(matched_skills) / len(required_skills)) * 100
+    return percentage
+
+
+score = calculate_match_score(matched, required_skills)
+
+print("Match Score:", score)
+
+
+# Display Report
+def display_report(matched, missing, score):
+    print("===== RESUME SKILL ANALYZER =====")
+
+    print("\nMatched Skills:")
+    for skill in matched:
+        print("✓", skill)
+
+    print("\nMissing Skills:")
+    for skill in missing:
+        print("✗", skill)
+
+    print(f"\nMatch Score: {score:.0f}%")
+
+
+display_report(matched, missing, score)
