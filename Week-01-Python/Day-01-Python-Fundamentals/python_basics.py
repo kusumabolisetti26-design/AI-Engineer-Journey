@@ -275,3 +275,53 @@ def display_report(matched, missing, score):
 
 
 display_report(matched, missing, score)
+
+
+#class and object
+class Student:
+    pass
+student1=Student()
+print(student1)
+
+#class
+class Student:
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+    def introduce(self):
+        print("my name is:",self.name)
+        print("my age is:",self.age)
+student1=Student("kusuma",20)
+student1.introduce()
+student2=Student("meghana",20)
+student2.introduce()
+
+#resume
+class Candidate:
+    def __init__(self,name,age,skills,experience):
+        self.name=name
+        self.age=age
+        self.skills=skills
+        self.experience=experience
+    def display(self):
+        print("Candidate name:",self.name)
+        print("Candidate age:",self.age)
+        print("Candidate skills:",self.skills)
+        print("Candidate Experience:",self.experience)
+    def check_skill(self, skill):
+        if skill in self.skills:
+            print(skill,"skill is available")
+        else:
+            print(skill,"not available")
+    def experience_level(self):
+        if self.experience == 0:
+            print("Experience Level: Fresher")
+        elif self.experience <= 2:
+            print("Experience Level: Junior")
+        else:
+            print("Experience Level: Experienced")
+candidate1=Candidate("kusuma",20,["java","python","dsa","AI"],1)
+candidate1.display()
+candidate1.check_skill("python")
+candidate1.check_skill("aws")
+candidate1.experience_level()
