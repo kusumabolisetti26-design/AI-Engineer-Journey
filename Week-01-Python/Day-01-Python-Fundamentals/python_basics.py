@@ -325,3 +325,136 @@ candidate1.display()
 candidate1.check_skill("python")
 candidate1.check_skill("aws")
 candidate1.experience_level()
+
+#FileHandling
+#reading
+file=open("Week-01-Python/Day-01-Python-Fundamentals/resume.txt","r")
+content=file.read()
+print(content)
+file.close()
+#writing
+file=open("Week-01-Python/Day-01-Python-Fundamentals/ai.txt","w")
+file.write("I am learning AI Engineering.")
+file.write("Python is my first step.")
+file.close()
+#append
+file = open("Week-01-Python/Day-01-Python-Fundamentals/ai.txt", "a")
+
+file.write("\nI will become an AI Engineer.")
+
+file.close()
+#with open()
+with open("Week-01-Python/Day-01-Python-Fundamentals/resume.txt","r")as file:
+    content=file.read()
+print(content)
+#csv
+import csv
+with open("Week-01-Python/Day-01-Python-Fundamentals/students.csv","r")as file:
+    reader=csv.reader(file)
+    for row in reader:
+        print(row)
+#json
+import json
+with open("Week-01-Python/Day-01-Python-Fundamentals/candidate.json","r")as file:
+    candidate=json.load(file)
+print(candidate)
+print(candidate["name"])
+print(candidate["skills"])
+
+
+#resume
+import json
+
+
+# ==============================
+# DAY 4 - FILE HANDLING
+# RESUME FILE ANALYZER
+# ==============================
+
+
+# 1. Load candidate data from JSON file
+def load_candidate(filename):
+    with open(filename, "r") as file:
+        candidate = json.load(file)
+
+    return candidate
+
+
+# 2. Display candidate information
+def display_candidate(candidate):
+    print("\n===== RESUME FILE ANALYZER =====")
+
+    print("\nCandidate:", candidate["name"])
+    print("Age:", candidate["age"])
+
+    print("\nSkills:")
+    for skill in candidate["skills"]:
+        print("✓", skill)
+
+
+# 3. Analyze candidate skills
+def analyze_skills(candidate, required_skills):
+
+    matched = []
+    missing = []
+
+    for skill in required_skills:
+
+        if skill in candidate["skills"]:
+            matched.append(skill)
+        else:
+            missing.append(skill)
+
+    print("\nMatched Skills:")
+    for skill in matched:
+        print("✓", skill)
+
+    print("\nMissing Skills:")
+    for skill in missing:
+        print("✗", skill)
+
+
+# 4. Calculate skill match score
+def calculate_match_score(candidate, required_skills):
+
+    matched_count = 0
+
+    for skill in required_skills:
+
+        if skill in candidate["skills"]:
+            matched_count += 1
+
+    score = (matched_count / len(required_skills)) * 100
+
+    print("\nMatch Score:", score, "%")
+
+
+# ==============================
+# MAIN PROGRAM
+# ==============================
+
+# JSON file location
+candidate = load_candidate(
+    "Week-01-Python/Day-01-Python-Fundamentals/candidate.json"
+)
+
+
+# Required skills for the job
+required_skills = [
+    "Python",
+    "SQL",
+    "AI",
+    "Machine Learning"
+]
+
+
+# Display candidate details
+display_candidate(candidate)
+
+
+# Analyze skills
+analyze_skills(candidate, required_skills)
+
+
+# Calculate match score
+calculate_match_score(candidate, required_skills)
